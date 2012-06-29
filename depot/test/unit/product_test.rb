@@ -34,4 +34,19 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
   
+  test "product title must be longer than 10 characters" do
+    product = Product.new(:description  => "jreiowjr",
+                          :image_url    => "jdiwrojeo.jpg",
+                          :price        => 15)
+                          
+    product.title = "12345"
+    assert product.invalid?
+    assert_equal "must have minimum length equal to 10 charaacters",
+      product.errors[:title].join('; ')
+    
+    product.title = "1234567890"
+    assert product.valid?
+                         
+  end
+  
 end
