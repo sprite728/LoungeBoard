@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   validates :title, :uniqueness => true;
   validates :image_url, :format => {
-    :with => %r{\.(git|jpg|png)$}i,
+    :with => %r{\.(gif|jpg|png)$}i,
     :message => 'must be a URL for GIF, JPG or PNG image.'
   }
+  validates :title, :length => {:greater_than_or_equal_to => 10}
 end
