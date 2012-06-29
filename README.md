@@ -1,4 +1,4 @@
-LoungeBoardMobile
+LoungeBoard
 =================
 
 The is an application design for the LoungeBoard Display project, an on-going project runs by the Interaction Ecology Group in School of Information, University of Michigan. <br/>
