@@ -1,0 +1,8 @@
+<h1>Hello from Rails</h1>
+<p>Find me in app/views/say/hello.html.erb</p>
+<p>It is now <%= Time.now %></p>
+<p>Time to say
+	<%= link_to "Goodbye!", say_goodbye_path%></p>
+<% for file in @files %>
+	<ul>file name is: <%= file%></ul>
+<% end %>
