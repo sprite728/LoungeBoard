@@ -15,7 +15,13 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 # encoding: utf-8
+
+# Clear all data in database
 Product.delete_all
+User.delete_all
+Category.delete_all
+
+
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
@@ -53,3 +59,14 @@ Product.create(:title => 'Rails Test Prescriptions',
       </p>},
   :image_url => '/images/rtp.jpg',
   :price => 43.75)
+  
+User.create(
+  :name => "Chuan-Che Huang"
+)
+
+Category.create [
+  {:name => 'Programming'},
+  {:name => 'Event'},
+  {:name => 'Travel'},
+  {:name => 'Music'},
+  {:name => 'TV'}]
