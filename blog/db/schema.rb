@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707033715) do
+ActiveRecord::Schema.define(:version => 20120707140730) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,45 @@ ActiveRecord::Schema.define(:version => 20120707033715) do
     t.datetime "updated_at",   :null => false
     t.string   "excerpt"
     t.string   "location"
+    t.integer  "user_id"
+  end
+
+  create_table "articles_categories", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "category_id"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "article_id"
+    t.string   "name"
+    t.string   "email"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "bio"
+    t.date     "birthdat"
+    t.string   "color"
+    t.string   "twitter"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "hashed_password"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
