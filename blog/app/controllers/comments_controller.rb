@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :load_article
   
   def create
-    @comment = @article.comments.new([params[:comment]])
+    @comment = @article.comments.new(params[:comment])
     if @comment.save
       redirect_to @article, :notice => 'Thanks for your comment'
     else
@@ -23,4 +23,3 @@ class CommentsController < ApplicationController
     end
 
 end
-
