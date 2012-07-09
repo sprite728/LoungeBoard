@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Loungeboard::Application.config.secret_token = '76fc7d7e3f27183033328359b5f18ede8d11173ecad1bb13128cf04f8f97cbd8d0dfe0c2e57fc39ffb274137db07b4f14413d6b73e3dbfa980a4a78027e828dd'
+Loungeboard::Application.config.secret_token = '560376aca499f5dadfd7f5c9af093931274ef2acf7a5dd54b3da5ac1c662ef502fca32b5c73255a7bf7492e841d7a80cfe2fda411c4e3ef335a1b3de0eec8ac1'

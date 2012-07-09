@@ -1,7 +1,8 @@
 class CreateBluetooths < ActiveRecord::Migration
   def change
     create_table :bluetooths do |t|
-      t.string :macaddr
+      t.integer :user_id
+      t.string :mac_addr
 
       t.timestamps
     end

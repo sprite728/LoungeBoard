@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @bluetooth.user_id %>
+</p>
+
+<p>
+  <b>Mac addr:</b>
+  <%= @bluetooth.mac_addr %>
+</p>
+
+
+<%= link_to 'Edit', edit_bluetooth_path(@bluetooth) %> |
+<%= link_to 'Back', bluetooths_path %>
