@@ -12,13 +12,30 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :hashed_password %><br />
-    <%= f.text_field :hashed_password %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </div>
+  <div class="field">
+    <%= f.label :password_confirmation, 'Confirm' %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  	<%= f.fields_for :bluetooths do |bluetooth_fields| %>
+    
+    	<div class="field">
+    		<%= bluetooth_fields.label :mac_addr, 'Bluetooth' %><br />
+    		<%= bluetooth_fields.text_field :mac_addr %>
+    	</div>
+ 
+  	<% end%>
   <div class="actions">
     <%= f.submit %>
   </div>
