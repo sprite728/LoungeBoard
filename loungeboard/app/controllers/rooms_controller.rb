@@ -86,7 +86,11 @@ class RoomsController < ApplicationController
   # GET /rooms/:id/get_visitors.xml
   def get_visitors 
     room = Room.find_by_name(params[:name])
-    @bluetooths = room.bluetooths.where("updated_at > ?", 10.seconds.ago.to_s)
+    @bluetooths = room.bluetooths.where("updated_at > ?", 5.seconds.ago.to_s)
+    
+    #For Testing
+    #@bluetooths = room.bluetooths.all
+    
     @users = []
     @bluetooths.each do |bt|
       @users << bt.user
@@ -95,7 +99,7 @@ class RoomsController < ApplicationController
     respond_to do |format|
       format.html # get_visitors.html.erb
       format.json { render :json => @users }
-      format.xml { render :xml => @users }
+      format.xml { render "get_visitors" }
     end
   end
   
@@ -117,6 +121,7 @@ class RoomsController < ApplicationController
       # format.html
       # format.json { render :json => @bluetooth }
       # format.xml { render :xml => @bluetooth }
+      # format.xml { head :no_content }
     # end
   end
   

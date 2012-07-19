@@ -1,0 +1,18 @@
+<h1>Update Visitors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Updated at</th>
+  </tr>
+
+  <tr>
+  	<% if @bluetooth %>
+    <td><%= @bluetooth.user.name %></td>
+    <td><%= @bluetooth.updated_at %></td>
+    <% end %>
+  </tr>
+</table>
+
+<br />
+
