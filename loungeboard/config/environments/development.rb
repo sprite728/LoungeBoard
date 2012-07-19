@@ -34,4 +34,7 @@ Loungeboard::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+   # Disable request forgery protection in test environment
+  config.action_controller.allow_forgery_protection    = false
 end

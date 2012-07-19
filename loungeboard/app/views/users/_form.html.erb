@@ -27,8 +27,12 @@
     <%= f.label :password_confirmation, 'Confirm' %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter %>
+  </div>
   
-  	<%= f.fields_for :bluetooths do |bluetooth_fields| %>
+  	<%= f.fields_for :bluetooth do |bluetooth_fields| %>
     
     	<div class="field">
     		<%= bluetooth_fields.label :mac_addr, 'Bluetooth' %><br />

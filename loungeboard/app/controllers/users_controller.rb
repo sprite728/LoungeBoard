@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @user.bluetooths.build
+    @user.build_bluetooth
     
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     # @bluetooth = Bluetooth.new(params[:mac_addr])
-    # @user.bluetooths << @bluetooth if Bluetooth.find_by_mac_addr(@bluetooth.mac_addr)
 #     
     respond_to do |format|
       if @user.save

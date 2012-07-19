@@ -1,10 +1,21 @@
 Loungeboard::Application.routes.draw do
-  resources :rooms
+  match 'rooms/:name/get_visitors' => 'rooms#get_visitors', :as => :get_visitors
+  match 'rooms/update_visitors' => 'rooms#update_visitors', :as => :update_visitors
+  #map.resources :rooms, : :collection => { :update_visitors => :get }
+  resources :rooms do
+    put :update_visitors, :on => :member
+  end
 
   resources :bluetooths
 
   resources :users
-
+  resource :session 
+  
+  match '/login' => "sessions#new", :as => :login
+  match '/logout' => "sessions#destroy", :as => :logout
+  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -15,7 +26,8 @@ Loungeboard::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-
+  
+  
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
@@ -54,7 +66,7 @@ Loungeboard::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Email</th>
+    <th>Twitter</th>
     <th>Bluetooth</th>
     <th></th>
     <th></th>
@@ -12,7 +13,8 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td><%= user.bluetooths.first.mac_addr if user.bluetooths.present? %></td>
+    <td><%= user.twitter %></td>>
+    <td><%= user.bluetooth.mac_addr if user.bluetooth.present? %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

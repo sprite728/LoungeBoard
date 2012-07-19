@@ -1,6 +1,6 @@
 require 'digest/sha2'
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :bluetooths_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :bluetooth_attributes, :twitter
   
   validates :name, :presence => true, 
                    :uniqueness => true,
@@ -13,12 +13,17 @@ class User < ActiveRecord::Base
                        :length => { :within => 4..20 },
                        :presence => true,
                        :if => :password_required?
+                       
+  validates :twitter, :presence => true,
+                      :length => { :within => 5..20 }
+                      
                       
   attr_accessor :password
   
   # Associations
-  has_many :bluetooths
-  accepts_nested_attributes_for :bluetooths
+  has_one :bluetooth
+  has_one :room, :through => :bluetooth
+  accepts_nested_attributes_for :bluetooth
   
   before_save :encrypt_new_password
   
@@ -28,16 +33,15 @@ class User < ActiveRecord::Base
     return user if user && user.authenticated?(password)
   end
   
-  def authenticatded?(password)
-    self.hashed_password == encrypt_password(password)
+  def authenticated?(password)
+    self.hashed_password == encrypt(password)
   end
   
   
   protected
     def encrypt_new_password
       return if password.blank?
-      generate_salt
-      self.hashed_password = encrypt_password(password, salt)
+      self.hashed_password = encrypt(password)
     end
   
     # only when a new password present, validation is required
@@ -46,11 +50,11 @@ class User < ActiveRecord::Base
     end
     
     
-    def encrypt_password(password, salt)
-      Digest::SHA2.hexdigest(password + "cloudatlas" + salt)
+    def encrypt(password)
+      Digest::SHA1.hexdigest(password)
     end
   
-    def generate_salt
-      self.salt = self.object_id.to_s + rand.to_s
-    end
+    # def generate_salt
+      # self.salt = self.object_id.to_s + rand.to_s
+    # end
 end
