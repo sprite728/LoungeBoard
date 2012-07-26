@@ -1,0 +1,21 @@
+<h1>Listing user_configs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_configs.each do |user_config| %>
+  <tr>
+    <td><%= link_to 'Show', user_config %></td>
+    <td><%= link_to 'Edit', edit_user_config_path(user_config) %></td>
+    <td><%= link_to 'Destroy', user_config, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User config', new_user_config_path %>
