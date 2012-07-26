@@ -116,13 +116,13 @@ class RoomsController < ApplicationController
       @bluetooth.updated_at = Time.now
       @bluetooth.save
     end
-#     
-    # respond_to do |format|
-      # format.html
-      # format.json { render :json => @bluetooth }
-      # format.xml { render :xml => @bluetooth }
-      # format.xml { head :no_content }
-    # end
+     
+    respond_to do |format|
+      format.html { head :no_content }
+      format.json { head :no_content }
+      format.xml { head :no_content }
+      format.xml { head :no_content }
+    end
   end
   
 end
